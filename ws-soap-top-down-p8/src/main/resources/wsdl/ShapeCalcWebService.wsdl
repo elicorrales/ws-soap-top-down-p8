@@ -36,6 +36,21 @@
         <wsdl:part name="response" element="resp:PendingRequestsResponse" />
     </wsdl:message>
 
+    <wsdl:message name="GetCalculatedResults" />
+    <wsdl:message name="GetCalculatedResultsResponse">
+        <wsdl:part name="response" element="resp:CalculatedResultsResponse" />
+    </wsdl:message>
+
+    <wsdl:message name="DeletePendingRequests" />
+    <wsdl:message name="DeletePendingRequestsResponse">
+        <wsdl:part name="response" element="resp:DeleteRequestsResponse" />
+    </wsdl:message>
+
+    <wsdl:message name="DeleteCalculatedResults" />
+    <wsdl:message name="DeleteCalculatedResultsResponse">
+        <wsdl:part name="response" element="resp:DeleteResultsResponse" />
+    </wsdl:message>
+
     <wsdl:portType name="ShapeCalculatorWebService">
 
         <wsdl:operation name="runAllPendingRequestsNoStopOnError">
@@ -51,6 +66,21 @@
         <wsdl:operation name="getPendingRequests">
             <wsdl:input  message="tns:GetPendingRequests"/>
             <wsdl:output message="tns:GetPendingRequestsResponse"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="getCalculatedResults">
+            <wsdl:input  message="tns:GetCalculatedResults"/>
+            <wsdl:output message="tns:GetCalculatedResultsResponse"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="deletePendingRequests">
+            <wsdl:input  message="tns:DeletePendingRequests"/>
+            <wsdl:output message="tns:DeletePendingRequestsResponse"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="deleteCalculatedResults">
+            <wsdl:input  message="tns:DeleteCalculatedResults"/>
+            <wsdl:output message="tns:DeleteCalculatedResultsResponse"/>
         </wsdl:operation>
 
     </wsdl:portType>
@@ -87,6 +117,38 @@
                 <soap:body use="literal" />
             </wsdl:output>
         </wsdl:operation>
+
+        <wsdl:operation name="getCalculatedResults">
+            <soap:operation soapAction="getCalculatedResults" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+
+
+        <wsdl:operation name="deletePendingRequests">
+            <soap:operation soapAction="deletePendingRequests" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="deleteCalculatedResults">
+            <soap:operation soapAction="deleteCalculatedResults" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+
 
     </wsdl:binding>
 

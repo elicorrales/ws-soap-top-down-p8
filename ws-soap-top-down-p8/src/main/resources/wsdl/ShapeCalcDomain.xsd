@@ -20,4 +20,14 @@
 		</xsd:sequence>
 	</xsd:complexType>
 
+	<xsd:complexType name="CalculationResult">
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="shapeName" type="model:ShapeName" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="calcType" type="model:CalcType" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="dimension" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="result" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="error" type="xsd:boolean" />
+		</xsd:sequence>
+	</xsd:complexType>
+
 </xsd:schema>
