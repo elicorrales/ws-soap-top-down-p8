@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://resp.ws.service.shape.calc.eli.com/" 
+	xmlns:resp="http://resp.ws.service.shape.calc.eli.com/"
+	xmlns:domain="http://domain.shape.calc.eli.com/"
+	elementFormDefault="qualified"
+	>
+
+	<xsd:import namespace="http://domain.shape.calc.eli.com/" schemaLocation="./ShapeCalcDomain.xsd" />
+	
+	<xsd:simpleType name="StatusCode">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="SUCCESS"/>
+			<xsd:enumeration value="ERROR"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:annotation>
+		<xsd:documentation>The class of the Exception </xsd:documentation>
+		<xsd:documentation>The Exception error message</xsd:documentation>
+		<xsd:documentation>The cause message if there is one</xsd:documentation>
+	</xsd:annotation>
+	<xsd:complexType name="StatusResponse">
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="status" type="resp:StatusCode" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="description" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="clazz" type="xsd:string"/>
+			<xsd:element minOccurs="0" maxOccurs="1" name="errMsg" type="xsd:string"/>
+			<xsd:element minOccurs="0" maxOccurs="1" name="causeMsg" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+
+	<xsd:element name="QueueResponse" type="resp:StatusResponse" />
+
+	<xsd:element name="RunPendingRequestsResponse">
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="resp:StatusResponse">
+					<xsd:sequence>
+						<xsd:element name="numRun" type="xsd:int"/>
+					</xsd:sequence>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="PendingRequestsResponse">
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="resp:StatusResponse">
+					<xsd:sequence>
+						<xsd:element 
+							name="pendingRequests" 
+							minOccurs="0"
+							maxOccurs="unbounded"
+							nillable="true"
+							type="domain:CalculationRequest"/>
+					</xsd:sequence>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+
+</xsd:schema>

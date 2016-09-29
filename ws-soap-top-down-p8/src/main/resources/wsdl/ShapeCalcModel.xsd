@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://model.shape.calc.eli.com/" 
+	xmlns:tns="http://model.shape.calc.eli.com/" 
+	elementFormDefault="qualified"
+	>
+
+	<!-- 
+            this type is here just to generate some required types for SOAP service.
+            this type is already in-use(originates) in another (base) project
+        -->
+	<xsd:simpleType name="ShapeName">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="FAKE_XSD_VAL_ONLY_NOT_USED" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<!-- 
+            this type is here just to generate some required types for SOAP service.
+            this type is already in-use(originates) in another (base) project
+        -->
+	<xsd:simpleType name="CalcType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="FAKE_XSD_VAL_ONLY_NOT_USED" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+
+</xsd:schema>
